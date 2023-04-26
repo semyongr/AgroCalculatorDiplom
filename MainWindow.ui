@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +12,24 @@
     <width>1100</width>
     <height>626</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1100</width>
+    <height>626</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1100</width>
+    <height>626</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Расчет количества норм удобрений</string>
@@ -60,7 +81,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 border-color: rgb(0, 0, 0);
-font: 11pt &quot;Book Antiqua&quot;;</string>
+font: 14pt &quot;Book Antiqua&quot;;</string>
     </property>
     <property name="text">
      <string>Очистить</string>
@@ -86,6 +107,9 @@ font: 11pt &quot;Book Antiqua&quot;;</string>
 background-color: rgb(255, 255, 255);
 </string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="load_img_btn">
     <property name="geometry">
@@ -99,7 +123,7 @@ background-color: rgb(255, 255, 255);
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 border-color: rgb(0, 0, 0);
-font: 11pt &quot;Book Antiqua&quot;;</string>
+font: 14pt &quot;Book Antiqua&quot;;</string>
     </property>
     <property name="text">
      <string>Обработать изображение</string>
@@ -201,7 +225,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLineEdit" name="square_tb">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>410</x>
       <y>70</y>
       <width>211</width>
       <height>41</height>
@@ -210,6 +234,9 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="styleSheet">
      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QFrame" name="MainWindow_2">
@@ -234,7 +261,7 @@ background-color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>120</y>
+       <y>130</y>
        <width>151</width>
        <height>81</height>
       </rect>
@@ -265,7 +292,7 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="number_lbl_2">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>390</x>
        <y>130</y>
        <width>151</width>
        <height>71</height>
@@ -294,7 +321,7 @@ color: rgb(0, 0, 0);</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLineEdit" name="number_tb_2">
+    <widget class="QLineEdit" name="number_tb">
      <property name="geometry">
       <rect>
        <x>550</x>
@@ -306,7 +333,12 @@ color: rgb(0, 0, 0);</string>
      <property name="styleSheet">
       <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+
 </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="mass_lbl_2">
@@ -341,7 +373,7 @@ color: rgb(0, 0, 0);</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLineEdit" name="mass_tb_2">
+    <widget class="QLineEdit" name="mass_tb">
      <property name="geometry">
       <rect>
        <x>890</x>
@@ -353,7 +385,11 @@ color: rgb(0, 0, 0);</string>
      <property name="styleSheet">
       <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -397,7 +433,7 @@ background-color: rgb(255, 255, 255);
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 border-color: rgb(0, 0, 0);
-font: 11pt &quot;Book Antiqua&quot;;</string>
+font: 14pt &quot;Book Antiqua&quot;;</string>
     </property>
     <property name="text">
      <string>Выполнить</string>

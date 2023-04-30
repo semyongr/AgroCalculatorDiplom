@@ -1,5 +1,5 @@
 import sys
-from PyQt6 import QtWidgets, uic
+from PyQt6 import QtWidgets, uic, QtCore
 from PyQt6.QtWidgets import QApplication, QDialog, QPushButton, QMainWindow, QMessageBox, QFileDialog, QWidget, QLabel
 from PyQt6.uic import loadUi
 from PyQt6.QtGui import QPixmap, QDoubleValidator, QIntValidator
@@ -49,8 +49,8 @@ class Login(QMainWindow):
                         'Ошибка!',
                         'Не удается войти: неверный пароль')
                 else:
-                    self.sub_window = MainWindowClass()
-                    self.sub_window.show()
+                    self.start_window = StartWindowClass()
+                    self.start_window.show()
                     Login.close(self)
 
         else:
@@ -58,6 +58,23 @@ class Login(QMainWindow):
             self,
             'Ошибка!',
             'Не удается подключиться к серверу. Проверьте подключение к интернету.')
+
+class StartWindowClass(QMainWindow):
+    def __init__(self):
+        super(StartWindowClass, self).__init__()
+        loadUi("StartWindow.ui", self)
+
+        self.main_window = MainWindowClass()
+        self.stock_window = StockWindowClass()
+
+        self.main_btn.clicked.connect(self.open_main)
+        self.stock_btn.clicked.connect(self.open_stock)
+
+    def open_main(self):
+        self.main_window.show()
+
+    def open_stock(self):
+        self.stock_window.show()
 
 class MainWindowClass(QMainWindow):
     def __init__(self):
@@ -69,6 +86,7 @@ class MainWindowClass(QMainWindow):
         self.quantity_tb.setValidator(QIntValidator())
         self.number_tb.setValidator(QIntValidator())
         self.mass_tb.setValidator(QDoubleValidator())
+
 
         # подключение к БД
         connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
@@ -108,28 +126,22 @@ class MainWindowClass(QMainWindow):
 
 
         # подключение форм
-        self.loadpic_window = LoadPicClass()
         self.result_window = ResultWindowClass()
+        self.image_window = ImageWindowClass()
 
         # подключение функций кнопкам
-        self.load_img_btn.clicked.connect(self.load_img)
+        self.load_img_btn.clicked.connect(self.open_img_window)
         self.calc_btn.clicked.connect(self.calc)
+        self.clear_btn.clicked.connect(self.clear)
 
-    # загрузка исходного изображения
-    def load_img(self):
-        fname = QFileDialog.getOpenFileName(self, "OpenFile", "C:\\",
-                                                     "PNG Files (*.png);;JPG Files (*.jpg)")
-        pixmap = QPixmap(fname[0])
-        self.loadpic_window.loadpic_lbl.setPixmap(pixmap)
-        self.loadpic_window.show()
+    def clear(self):
+        self.square_tb.setText('')
+        self.quantity_tb.setText('')
+        self.number_tb.setText('')
+        self.mass_tb.setText('')
 
-        im = Image.open(fname[0])
-        black = 0
-        for pixel in im.getdata():
-            if pixel == (0, 0, 0):
-                black += 1
-        self.square_tb.setText(str(black))
-        print(black)
+    def open_img_window(self):
+        self.image_window.show()
 
     # калькулятор удобрений
     def calc(self):
@@ -139,16 +151,21 @@ class MainWindowClass(QMainWindow):
                 'Ошибка!',
                 'Заполните все поля!'
             )
-
-            # exit()
+        elif (self.square_tb.text() == ',') | (self.mass_tb.text() == ','):
+            QMessageBox.information(
+                self,
+                'Ошибка!',
+                'Введены некорректные данные!'
+            )
         else:
-            square = float(self.square_tb.text())
+            square = float((self.square_tb.text()).replace(",","."))
             quantity = int(self.quantity_tb.text())
             number = int(self.number_tb.text())
-            mass = float(self.mass_tb.text())
+            mass = float(self.mass_tb.text().replace(",","."))
             posphor_level = str(self.phosphor_cb.currentText())
             potassium_level = str(self.potassium_cb.currentText())
             culture = str(self.culture_cb.currentText())
+            print(mass)
 
             # азотистые удобрения
             self.sql_azote = "SELECT `azote` FROM `fertilizers` WHERE culture = %s"
@@ -180,17 +197,65 @@ class MainWindowClass(QMainWindow):
             self.potas_coeff = self.cursor.fetchone()
             self.potas_coeff = float(self.potas_coeff[0])
 
-            harvest = (square * quantity * mass) / 10000
-            result_azote = harvest * number * self.azote
-            result_phosphor = harvest * number * self.phosphor * self.phos_coeff
-            result_potassium = harvest * number * self.potassium * self.potas_coeff
+            harvest = square * ((quantity * number * mass) / 10000)
+            result_azote = harvest * self.azote
+            result_phosphor = harvest * self.phosphor * self.phos_coeff
+            result_potassium = harvest * self.potassium * self.potas_coeff
 
-            result = f'Доза азотных удобрений: {result_azote}' + '\n' + \
-                     f'Доза фосфорных удобрений: {result_phosphor}' + '\n' + \
-                     f'Доза калийных удобрений: {result_potassium}'
+            result = f'Доза азотных удобрений: {round(result_azote)}' + '\n' + \
+                     f'Доза фосфорных удобрений: {round(result_phosphor)}' + '\n' + \
+                     f'Доза калийных удобрений: {round(result_potassium)}'
 
             self.result_window.result_lbl.setText(result)
             self.result_window.show()
+
+
+class ImageWindowClass(QMainWindow):
+    def __init__(self):
+        super(ImageWindowClass, self).__init__()
+        loadUi("ImageWindow.ui", self)
+
+        self.field_square_tb.setValidator(QDoubleValidator())
+
+        self.loadpic_window = LoadPicClass()
+        self.select_img_btn.clicked.connect(self.load_img)
+
+
+    # загрузка исходного изображения
+    def load_img(self):
+        field_square = (self.field_square_tb.text()).replace(",", ".")
+        if ((self.field_square_tb.text() == "")):
+            QMessageBox.information(
+                self,
+                'Ошибка!',
+                'Внесите данные о площади поля!')
+        else:
+            fname = QFileDialog.getOpenFileName(self, "OpenFile", "C:\\",
+                                                    "PNG Files (*.png);;JPG Files (*.jpg)")
+            if fname[0] == "":
+                QMessageBox.information(
+                    self,
+                    'Ошибка!',
+                    'Изображение не выбрано!')
+            else:
+                pixmap = QPixmap(fname[0])
+                self.loadpic_window.loadpic_lbl.setPixmap(pixmap)
+                self.loadpic_window.show()
+
+                im = Image.open(fname[0])
+                width, height = im.size
+                # print(width)
+                red_pixels = 0
+                for pixel in im.getdata():
+                    if pixel == (204, 0, 1):
+                        red_pixels += 1
+                # self.square_tb.setText(str(black))
+
+
+                print(red_pixels)
+
+                zone_square = (float(field_square) * red_pixels) / (width * height)
+                print(zone_square)
 
 
 class ResultWindowClass(QMainWindow):
@@ -198,6 +263,10 @@ class ResultWindowClass(QMainWindow):
         super(ResultWindowClass, self).__init__()
         loadUi("ResultWindow.ui", self)
 
+class StockWindowClass(QMainWindow):
+    def __init__(self):
+        super(StockWindowClass, self).__init__()
+        loadUi("StockWindow.ui", self)
 
 class LoadPicClass(QMainWindow):
     def __init__(self):

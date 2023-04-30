@@ -43,7 +43,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>350</y>
+      <y>370</y>
       <width>381</width>
       <height>41</height>
      </rect>
@@ -58,7 +58,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>430</y>
+      <y>440</y>
       <width>381</width>
       <height>41</height>
      </rect>
@@ -97,7 +97,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>160</y>
+      <y>210</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -107,6 +107,9 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
 background-color: rgb(255, 255, 255);
 </string>
     </property>
+    <property name="maxLength">
+     <number>8</number>
+    </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
@@ -115,7 +118,7 @@ background-color: rgb(255, 255, 255);
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>60</y>
+      <y>119</y>
       <width>261</width>
       <height>61</height>
      </rect>
@@ -139,7 +142,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>250</y>
+      <y>280</y>
       <width>421</width>
       <height>71</height>
      </rect>
@@ -157,7 +160,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
      <string>Содержание в почве фосфорных соединений</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
@@ -167,7 +170,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>270</y>
+      <y>300</y>
       <width>381</width>
       <height>41</height>
      </rect>
@@ -181,10 +184,10 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLabel" name="square_lbl">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>60</y>
+      <x>290</x>
+      <y>139</y>
       <width>151</width>
-      <height>51</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -198,7 +201,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>330</y>
+      <y>350</y>
       <width>451</width>
       <height>71</height>
      </rect>
@@ -216,7 +219,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
      <string>Содержание в почве калийных соединений</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
@@ -225,15 +228,18 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLineEdit" name="square_tb">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>70</y>
-      <width>211</width>
+      <x>450</x>
+      <y>129</y>
+      <width>161</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="maxLength">
+     <number>10</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -261,7 +267,7 @@ background-color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>130</y>
+       <y>180</y>
        <width>151</width>
        <height>81</height>
       </rect>
@@ -293,7 +299,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>390</x>
-       <y>130</y>
+       <y>180</y>
        <width>151</width>
        <height>71</height>
       </rect>
@@ -325,7 +331,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>550</x>
-       <y>140</y>
+       <y>190</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -337,6 +343,9 @@ color: rgb(0, 0, 0);
 
 </string>
      </property>
+     <property name="maxLength">
+      <number>8</number>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -345,7 +354,7 @@ color: rgb(0, 0, 0);
      <property name="geometry">
       <rect>
        <x>740</x>
-       <y>130</y>
+       <y>180</y>
        <width>141</width>
        <height>71</height>
       </rect>
@@ -377,7 +386,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>890</x>
-       <y>140</y>
+       <y>190</y>
        <width>151</width>
        <height>41</height>
       </rect>
@@ -388,6 +397,34 @@ background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);
 </string>
      </property>
+     <property name="maxLength">
+      <number>10</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="title_lbl">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>20</y>
+       <width>671</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Book Antiqua</family>
+       <pointsize>22</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Расчет количества норм удобрений</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -397,7 +434,7 @@ color: rgb(0, 0, 0);
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>410</y>
+      <y>420</y>
       <width>431</width>
       <height>71</height>
      </rect>
@@ -415,7 +452,7 @@ color: rgb(0, 0, 0);
      <string>Сельскохозяйственная культура</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>

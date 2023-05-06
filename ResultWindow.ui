@@ -41,7 +41,7 @@
       <x>20</x>
       <y>20</y>
       <width>761</width>
-      <height>361</height>
+      <height>441</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -56,7 +56,7 @@
     <widget class="QLabel" name="title_lbl">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>130</x>
        <y>10</y>
        <width>531</width>
        <height>81</height>
@@ -78,56 +78,205 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="result_lbl">
+    <widget class="QLabel" name="azot_lbl">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>100</y>
-       <width>701</width>
-       <height>231</height>
+       <x>140</x>
+       <y>150</y>
+       <width>141</width>
+       <height>21</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>Book Antiqua</family>
-       <pointsize>16</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string/>
+      <string>Азотные, кг:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="azot_tb">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>140</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="use_btn">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>400</y>
-      <width>321</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
+    <widget class="QLineEdit" name="potassium_tb">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>320</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="phosphor_tb">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>230</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="potassium_lbl">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>330</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Калийные, кг:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="phosphor_lbl">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>240</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Фосфорные, кг:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="use_btn_azote">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>140</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 border-color: rgb(0, 0, 0);
 font: 14pt &quot;Book Antiqua&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Использовать удобрения</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoRepeatDelay">
-     <number>300</number>
-    </property>
+     </property>
+     <property name="text">
+      <string>Использовать</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>300</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="use_btn_phosphor">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>230</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+font: 14pt &quot;Book Antiqua&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Использовать</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>300</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="use_btn_potassium">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>320</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+font: 14pt &quot;Book Antiqua&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Использовать</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>300</number>
+     </property>
+    </widget>
+    <zorder>title_lbl</zorder>
+    <zorder>azot_lbl</zorder>
+    <zorder>azot_tb</zorder>
+    <zorder>potassium_lbl</zorder>
+    <zorder>phosphor_lbl</zorder>
+    <zorder>use_btn_azote</zorder>
+    <zorder>use_btn_phosphor</zorder>
+    <zorder>use_btn_potassium</zorder>
+    <zorder>phosphor_tb</zorder>
+    <zorder>potassium_tb</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

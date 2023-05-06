@@ -96,7 +96,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLineEdit" name="quantity_tb">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>220</x>
       <y>210</y>
       <width>151</width>
       <height>41</height>
@@ -108,34 +108,10 @@ background-color: rgb(255, 255, 255);
 </string>
     </property>
     <property name="maxLength">
-     <number>8</number>
+     <number>4</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="load_img_btn">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>119</y>
-      <width>261</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(0, 0, 0);
-font: 14pt &quot;Book Antiqua&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Обработать изображение</string>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoRepeatDelay">
-     <number>300</number>
     </property>
    </widget>
    <widget class="QLabel" name="phosphor_lbl">
@@ -184,7 +160,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLabel" name="square_lbl">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>410</x>
       <y>139</y>
       <width>151</width>
       <height>21</height>
@@ -228,18 +204,28 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLineEdit" name="square_tb">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>570</x>
       <y>129</y>
       <width>161</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Book Antiqua</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="maxLength">
-     <number>10</number>
+     <number>5</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -266,9 +252,9 @@ background-color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="quantity_lbl_2">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>50</x>
        <y>180</y>
-       <width>151</width>
+       <width>111</width>
        <height>81</height>
       </rect>
      </property>
@@ -286,7 +272,7 @@ background-color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Количество колосьев на 1 кв. м, шт.</string>
+      <string>Количество растений на 1 кв. м, шт.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -318,7 +304,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Число зёрен в колосе, шт.</string>
+      <string>Число зёрен в растении шт.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -332,7 +318,7 @@ color: rgb(0, 0, 0);</string>
       <rect>
        <x>550</x>
        <y>190</y>
-       <width>151</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
@@ -344,7 +330,7 @@ color: rgb(0, 0, 0);
 </string>
      </property>
      <property name="maxLength">
-      <number>8</number>
+      <number>4</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -398,7 +384,7 @@ color: rgb(0, 0, 0);
 </string>
      </property>
      <property name="maxLength">
-      <number>10</number>
+      <number>6</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -487,7 +473,6 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <zorder>clear_btn</zorder>
    <zorder>potassium_lbl</zorder>
    <zorder>culture_lbl</zorder>
-   <zorder>load_img_btn</zorder>
    <zorder>phosphor_cb</zorder>
    <zorder>phosphor_lbl</zorder>
    <zorder>calc_btn</zorder>

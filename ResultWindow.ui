@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>489</height>
+    <width>1050</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
-    <height>489</height>
+    <width>900</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
-    <height>489</height>
+    <width>1050</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -40,8 +40,8 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>761</width>
-      <height>441</height>
+      <width>1011</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -56,10 +56,10 @@
     <widget class="QLabel" name="title_lbl">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>220</x>
        <y>10</y>
-       <width>531</width>
-       <height>81</height>
+       <width>581</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -71,8 +71,11 @@
      <property name="styleSheet">
       <string notr="true">color: rgb(0, 0, 0);</string>
      </property>
+     <property name="midLineWidth">
+      <number>1</number>
+     </property>
      <property name="text">
-      <string>Годовые нормы удобрений</string>
+      <string>Результаты расчета удобрений</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -81,33 +84,35 @@
     <widget class="QLabel" name="azot_lbl">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>150</y>
-       <width>141</width>
+       <x>320</x>
+       <y>100</y>
+       <width>161</width>
        <height>21</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+      <string notr="true">font: 16pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Азотные, кг:</string>
+      <string>Азотные N</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="azot_tb">
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>140</y>
-       <width>171</width>
+       <y>180</y>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+border: none;
+background-color: rgb(141, 196, 145);
+</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -119,16 +124,17 @@ background-color: rgb(255, 255, 255);</string>
     <widget class="QLineEdit" name="potassium_tb">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>320</y>
-       <width>171</width>
+       <x>760</x>
+       <y>180</y>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+border: none;
+background-color: rgb(141, 196, 145);</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -140,16 +146,17 @@ background-color: rgb(255, 255, 255);</string>
     <widget class="QLineEdit" name="phosphor_tb">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>230</y>
-       <width>171</width>
+       <x>510</x>
+       <y>180</y>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+border: none;
+background-color: rgb(141, 196, 145);</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -161,26 +168,68 @@ background-color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="potassium_lbl">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>330</y>
+       <x>810</x>
+       <y>100</y>
        <width>161</width>
        <height>21</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+      <string notr="true">font: 16pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Калийные, кг:</string>
+      <string>Калийные K</string>
      </property>
     </widget>
     <widget class="QLabel" name="phosphor_lbl">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>240</y>
+       <x>560</x>
+       <y>100</y>
        <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Фосфорные P</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="use_btn">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>470</y>
+       <width>221</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+font: 14pt &quot;Book Antiqua&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Использовать</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>300</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="azot_lbl_3">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>280</y>
+       <width>141</width>
        <height>21</height>
       </rect>
      </property>
@@ -189,82 +238,243 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Фосфорные, кг:</string>
+      <string>Наличие, кг</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="use_btn_azote">
+    <widget class="QLabel" name="quantity_lbl_2">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>10</x>
        <y>140</y>
-       <width>211</width>
-       <height>41</height>
+       <width>231</width>
+       <height>131</height>
       </rect>
      </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
-font: 14pt &quot;Book Antiqua&quot;;</string>
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Использовать</string>
+      <string>Рекомендуемая
+ норма удобрений,
+ кг на поле</string>
      </property>
-     <property name="checkable">
-      <bool>false</bool>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
-     <property name="autoRepeatDelay">
-      <number>300</number>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="use_btn_phosphor">
+    <widget class="QLineEdit" name="azot_storage">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>230</y>
-       <width>211</width>
+       <x>260</x>
+       <y>270</y>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
-font: 14pt &quot;Book Antiqua&quot;;</string>
+border: none;
+background-color: rgb(141, 196, 145);
+</string>
      </property>
-     <property name="text">
-      <string>Использовать</string>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-     <property name="autoRepeatDelay">
-      <number>300</number>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="use_btn_potassium">
+    <widget class="QLineEdit" name="phosphor_storage">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>320</y>
-       <width>211</width>
+       <x>510</x>
+       <y>270</y>
+       <width>231</width>
        <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
 color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
-font: 14pt &quot;Book Antiqua&quot;;</string>
+border: none;
+background-color: rgb(141, 196, 145);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="potassium_storage">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>270</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: bold 18pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+border: none;
+background-color: rgb(141, 196, 145);</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="azot_lbl_5">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>370</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Использовать</string>
+      <string>Состояние</string>
      </property>
-     <property name="checkable">
-      <bool>false</bool>
+    </widget>
+    <widget class="QTextEdit" name="azot_status">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>360</y>
+       <width>171</width>
+       <height>71</height>
+      </rect>
      </property>
-     <property name="autoRepeatDelay">
-      <number>300</number>
+     <property name="styleSheet">
+      <string notr="true">font:bold  15pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+border: none;
+text-align:center;
+background-color: rgb(141, 196, 145);
+</string>
+     </property>
+     <property name="midLineWidth">
+      <number>-2</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua'; font-size:15pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="setAlignment" stdset="0">
+      <string>AlignCenter</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="phosphor_status">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>360</y>
+       <width>171</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:bold  15pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+border: none;
+background-color: rgb(141, 196, 145);
+</string>
+     </property>
+     <property name="midLineWidth">
+      <number>-2</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua'; font-size:15pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="setAlignment" stdset="0">
+      <string>AlignCenter</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="potassium_status">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>360</y>
+       <width>161</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:bold  15pt &quot;Book Antiqua&quot;;
+color: rgb(0, 0, 0);
+border: none;
+background-color: rgb(141, 196, 145);
+</string>
+     </property>
+     <property name="midLineWidth">
+      <number>-2</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua'; font-size:15pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="setAlignment" stdset="0">
+      <string>AlignCenter</string>
      </property>
     </widget>
     <zorder>title_lbl</zorder>
@@ -272,11 +482,18 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
     <zorder>azot_tb</zorder>
     <zorder>potassium_lbl</zorder>
     <zorder>phosphor_lbl</zorder>
-    <zorder>use_btn_azote</zorder>
-    <zorder>use_btn_phosphor</zorder>
-    <zorder>use_btn_potassium</zorder>
+    <zorder>use_btn</zorder>
     <zorder>phosphor_tb</zorder>
     <zorder>potassium_tb</zorder>
+    <zorder>azot_lbl_3</zorder>
+    <zorder>quantity_lbl_2</zorder>
+    <zorder>azot_storage</zorder>
+    <zorder>phosphor_storage</zorder>
+    <zorder>potassium_storage</zorder>
+    <zorder>azot_lbl_5</zorder>
+    <zorder>azot_status</zorder>
+    <zorder>phosphor_status</zorder>
+    <zorder>potassium_status</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

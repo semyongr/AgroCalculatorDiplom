@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>519</width>
-    <height>379</height>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Авторизация</string>
+   <string>Вход в систему</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(141, 196, 145);
@@ -54,8 +54,8 @@ background-color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="login_btn">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>260</y>
+      <x>170</x>
+      <y>250</y>
       <width>191</width>
       <height>61</height>
      </rect>
@@ -114,9 +114,9 @@ background-color: rgb(255, 255, 255);</string>
    <widget class="QLabel" name="title_lbl">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>80</x>
       <y>40</y>
-      <width>221</width>
+      <width>381</width>
       <height>41</height>
      </rect>
     </property>
@@ -133,7 +133,7 @@ background-color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="text">
-     <string>Авторизация</string>
+     <string>Войдите в систему</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -145,7 +145,7 @@ background-color: rgb(255, 255, 255);</string>
       <x>20</x>
       <y>20</y>
       <width>481</width>
-      <height>331</height>
+      <height>361</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -160,6 +160,31 @@ background-color: rgb(255, 255, 255);</string>
     <property name="lineWidth">
      <number>1</number>
     </property>
+    <widget class="QPushButton" name="registr_btn">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>310</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
+text-decoration: underline;
+color: rgb(0, 0, 0);
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>Зарегистрироваться</string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeatDelay">
+      <number>300</number>
+     </property>
+    </widget>
    </widget>
    <zorder>frame</zorder>
    <zorder>login_tb</zorder>

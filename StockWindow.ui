@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Результат</string>
+   <string>Учет удобрений</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(141, 196, 145);</string>

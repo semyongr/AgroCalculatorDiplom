@@ -1,12 +1,10 @@
 import sys
-from PyQt6 import QtWidgets, uic, QtCore
-from PyQt6.QtWidgets import QApplication, QDialog, QPushButton, QMainWindow, QMessageBox, QFileDialog, QWidget, QLabel
+import pymysql
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from PyQt6.uic import loadUi
 from PyQt6.QtGui import QPixmap, QDoubleValidator, QIntValidator
 from PIL import Image
-# from connection import *
 
-import pymysql
 
 def info(self, title, text):
     QMessageBox.information(
@@ -19,11 +17,12 @@ class Login(QMainWindow):
         super(Login, self).__init__()
         loadUi("LoginWindow.ui", self)
 
-        self.login_btn.clicked.connect(self.conn)
+        self.login_btn.clicked.connect(self.connect)
 
-    def conn(self):
+    def connect(self):
         connected = False
         try:
+            global connection
             connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
             connected = True
         except pymysql.MySQLError as ex:
@@ -32,17 +31,18 @@ class Login(QMainWindow):
         if connected == True:
             cursor = connection.cursor()
             if ((self.login_tb.text() == "") | (self.pass_tb.text() == "")):
-                info(self, 'Ошибка!', 'Заполните все поля!')
+                info(self, 'Ошибка!', 'Введите логин и пароль')
             else:
+                global login
                 login = self.login_tb.text()
                 password = self.pass_tb.text()
                 self.sql_login = "SELECT * FROM `users` WHERE login = %s"
                 cursor.execute(self.sql_login, (login))
                 value = cursor.fetchall()
                 if value == ():
-                    info(self, 'Ошибка!', 'Не удается войти: пользователь с данным логином не зарегистрирован')
+                    info(self, 'Ошибка!', 'Логин не зарегистрирован в системе')
                 elif value[0][1] != password:
-                    info(self, 'Ошибка!', 'Не удается войти: неверный пароль')
+                    info(self, 'Ошибка!', 'Неверный пароль')
                 else:
                     self.start_window = StartWindowClass()
                     self.start_window.show()
@@ -57,28 +57,30 @@ class StartWindowClass(QMainWindow):
 
         self.main_window = MainWindowClass()
         self.stock_window = StockWindowClass()
+        self.image_window = ImageWindowClass()
+
 
         self.main_btn.clicked.connect(self.open_main)
         self.stock_btn.clicked.connect(self.open_stock)
+        self.analyz_btn.clicked.connect(self.open_img_window)
 
     def open_main(self):
         self.main_window.show()
 
+    def open_img_window(self):
+        self.image_window.show()
+
     def open_stock(self):
-        connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
         cursor = connection.cursor()
         self.connection = connection
         self.cursor = cursor
 
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Азотные'")
-        self.sql = self.cursor.fetchone()
-        self.stock_window.azot_tb.setText(str(self.sql[0]))
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Калийные'")
-        self.sql = self.cursor.fetchone()
-        self.stock_window.potassium_tb.setText(str(self.sql[0]))
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Фосфорные'")
-        self.sql = self.cursor.fetchone()
-        self.stock_window.phosphor_tb.setText(str(self.sql[0]))
+        self.sql_stock = "SELECT * FROM stock WHERE id_user = %s"
+        self.cursor.execute(self.sql_stock, login)
+        self.sql = self.cursor.fetchall()
+        self.stock_window.azot_tb.setText(str(self.sql[0][1]))
+        self.stock_window.potassium_tb.setText(str(self.sql[0][2]))
+        self.stock_window.phosphor_tb.setText(str(self.sql[0][3]))
         self.stock_window.show()
 
 class MainWindowClass(QMainWindow):
@@ -92,12 +94,19 @@ class MainWindowClass(QMainWindow):
         self.number_tb.setValidator(QIntValidator())
         self.mass_tb.setValidator(QDoubleValidator())
 
-
         # подключение к БД
-        connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
         cursor = connection.cursor()
         self.connection = connection
         self.cursor = cursor
+
+        # подключение форм
+        self.result_window = ResultWindowClass()
+        self.image_window = ImageWindowClass()
+
+        # подключение функций кнопкам
+        self.load_img_btn.clicked.connect(self.open_img_window)
+        self.calc_btn.clicked.connect(self.calc)
+        self.clear_btn.clicked.connect(self.clear)
 
         # подгрузка с/х культур в checkbox
         def cultures(self):
@@ -128,16 +137,6 @@ class MainWindowClass(QMainWindow):
                 self.pot_levels.append(i[0])
             self.potassium_cb.addItems(self.pot_levels)
         potassium(self)
-
-
-        # подключение форм
-        self.result_window = ResultWindowClass()
-        self.image_window = ImageWindowClass()
-
-        # подключение функций кнопкам
-        self.load_img_btn.clicked.connect(self.open_img_window)
-        self.calc_btn.clicked.connect(self.calc)
-        self.clear_btn.clicked.connect(self.clear)
 
     def clear(self):
         self.square_tb.setText('')
@@ -199,10 +198,6 @@ class MainWindowClass(QMainWindow):
             result_phosphor = round(harvest * self.phosphor * self.phos_coeff)
             result_potassium = round(harvest * self.potassium * self.potas_coeff)
 
-            # result = f'Доза азотных удобрений: {result_azote}' + '\n' + \
-            #          f'Доза фосфорных удобрений: {result_phosphor}' + '\n' + \
-            #          f'Доза калийных удобрений: {result_potassium}'
-
             self.result_window.azot_tb.setText(str(result_azote))
             self.result_window.phosphor_tb.setText(str(result_phosphor))
             self.result_window.potassium_tb.setText(str(result_potassium))
@@ -258,53 +253,27 @@ class ResultWindowClass(QMainWindow):
         self.phosphor_tb.setValidator(QIntValidator())
         self.potassium_tb.setValidator(QIntValidator())
 
-        connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
         cursor = connection.cursor()
         self.connection = connection
         self.cursor = cursor
 
-        self.use_btn_azote.clicked.connect(self.use_azote)
-        self.use_btn_phosphor.clicked.connect(self.use_phosphor)
-        self.use_btn_potassium.clicked.connect(self.use_potassium)
+        self.use_btn_azote.clicked.connect(lambda: self.use(int(self.azot_tb.text()), 'azote_count'))
+        self.use_btn_phosphor.clicked.connect(lambda: self.use(int(self.phosphor_tb.text()), 'phosp_count'))
+        self.use_btn_potassium.clicked.connect(lambda: self.use(int(self.potassium_tb.text()), 'potas_count'))
 
-    def use_azote(self):
-        azote = int(self.azot_tb.text())
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Азотные'")
-        self.sql = self.cursor.fetchone()
-        result = int(self.sql[0]) - azote
+    def use(self, count, type):
+        self.sql_select = f"SELECT {type} FROM stock WHERE id_user = %s"
+        self.cursor.execute(self.sql_select, login)
+        self.query = self.cursor.fetchone()
+
+        result = int(self.query[0]) - count
         if result >= 0:
             info(self, 'Успешно', 'Изменения сохранены')
-            self.sql_azote = "UPDATE stock SET count = %s WHERE type = 'Азотные'"
-            self.cursor.execute(self.sql_azote, (result))
+            self.sql_update = f"UPDATE stock SET {type} = %s WHERE id_user = %s"
+            self.cursor.execute(self.sql_update, (result, login))
             self.connection.commit()
         else:
-            info(self, 'Ошибка!', 'В хранилище недосточно удобрений для выполнения данной операции')
-
-    def use_phosphor(self):
-        phosphor = int(self.phosphor_tb.text())
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Фосфорные'")
-        self.sql = self.cursor.fetchone()
-        result = int(self.sql[0]) - phosphor
-        if result >= 0:
-            info(self, 'Успешно', 'Изменения сохранены')
-            self.sql_phosphor = "UPDATE stock SET count = %s WHERE type = 'Фосфорные'"
-            self.cursor.execute(self.sql_phosphor, (result))
-            self.connection.commit()
-        else:
-            info(self, 'Ошибка!', 'В хранилище недосточно удобрений для выполнения данной операции')
-
-    def use_potassium(self):
-        potassium = int(self.potassium_tb.text())
-        self.cursor.execute("SELECT count FROM stock WHERE type = 'Калийные'")
-        self.sql = self.cursor.fetchone()
-        result = int(self.sql[0]) - potassium
-        if result >= 0:
-            info(self, 'Успешно', 'Изменения сохранены')
-            self.sql_potassium = "UPDATE stock SET count = %s WHERE type = 'Калийные'"
-            self.cursor.execute(self.sql_potassium, (result))
-            self.connection.commit()
-        else:
-            info(self, 'Ошибка!', 'В хранилище недосточно удобрений для выполнения данной операции')
+            info(self, 'Ошибка!', 'Недосточно удобрений для выполнения данной операции')
 
 class StockWindowClass(QMainWindow):
     def __init__(self):
@@ -315,7 +284,6 @@ class StockWindowClass(QMainWindow):
         self.phosphor_tb.setValidator(QIntValidator())
         self.potassium_tb.setValidator(QIntValidator())
 
-        connection = pymysql.connect(host="127.0.0.1", user="root", password="", database="agrohelperdb")
         cursor = connection.cursor()
         self.connection = connection
         self.cursor = cursor
@@ -329,14 +297,10 @@ class StockWindowClass(QMainWindow):
             potassium = int(self.potassium_tb.text())
             phosphor = int(self.phosphor_tb.text())
 
-            self.sql_azote = "UPDATE stock SET count = CASE " \
-                             "WHEN type = 'Азотные' THEN %s " \
-                             "WHEN type = 'Калийные' THEN %s " \
-                             "WHEN type = 'Фосфорные' THEN %s " \
-                             "END"
-            self.cursor.execute(self.sql_azote, (azote, potassium, phosphor))
+            self.sql_update = "UPDATE stock SET azote_count = %s, potas_count = %s, phosp_count = %s WHERE id_user = %s"
+            self.cursor.execute(self.sql_update, (azote, potassium, phosphor, login))
             self.connection.commit()
-            info(self, 'Успешно ', 'Изменения сохранены')
+            info(self, 'Успешно ', 'Данные сохранены')
 
 class LoadPicClass(QMainWindow):
     def __init__(self):
@@ -347,5 +311,6 @@ app = QApplication(sys.argv)
 window = Login()
 window.show()
 app.exec()
+
 
 

@@ -49,7 +49,7 @@ background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="maxLength">
-     <number>15</number>
+     <number>24</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -159,7 +159,7 @@ background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="maxLength">
-      <number>20</number>
+      <number>24</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -180,7 +180,7 @@ background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="maxLength">
-      <number>20</number>
+      <number>24</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -202,7 +202,7 @@ background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="maxLength">
-     <number>15</number>
+     <number>24</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Normal</enum>
@@ -252,13 +252,22 @@ color: rgb(0, 0, 0);</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Book Antiqua</family>
+      <pointsize>14</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
     </property>
     <property name="maxLength">
-     <number>15</number>
+     <number>24</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

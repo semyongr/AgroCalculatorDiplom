@@ -21,9 +21,9 @@
    <widget class="QLabel" name="login_lbl">
     <property name="geometry">
      <rect>
-      <x>67</x>
+      <x>80</x>
       <y>110</y>
-      <width>81</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
@@ -37,15 +37,18 @@
    <widget class="QLineEdit" name="login_tb">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>160</x>
       <y>110</y>
-      <width>261</width>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14pt &quot;Book Antiqua&quot;;
 background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="maxLength">
+     <number>24</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -78,7 +81,7 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLabel" name="pass_lbl">
     <property name="geometry">
      <rect>
-      <x>67</x>
+      <x>73</x>
       <y>180</y>
       <width>91</width>
       <height>41</height>
@@ -94,15 +97,18 @@ font: 14pt &quot;Book Antiqua&quot;;</string>
    <widget class="QLineEdit" name="pass_tb">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>160</x>
       <y>180</y>
-      <width>261</width>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 14pt;
 background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="maxLength">
+     <number>24</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>

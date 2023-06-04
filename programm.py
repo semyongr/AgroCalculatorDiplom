@@ -27,7 +27,8 @@ class Login(QMainWindow):
         connected = False
         try:
             global connection #переменная со строкой подключения к бд
-            connection = pymysql.connect(host="sql7.freesqldatabase.com", user="sql7617312", password="gWie5b7wG4", database="sql7617312")
+            connection = pymysql.connect(host="sql7.freesqldatabase.com", user="sql7617312", password="gWie5b7wG4",
+                                         database="sql7617312")
             connected = True
         except pymysql.MySQLError as ex:
             error = ex
@@ -85,7 +86,8 @@ class RegistrationClass(QMainWindow):
         connection = pymysql.connect(host="sql7.freesqldatabase.com", user="sql7617312", password="gWie5b7wG4",
                                      database="sql7617312")
         cursor = connection.cursor()
-        if ((self.surname_tb.text() == "") | (self.name_tb.text() == "") | (self.patr_tb.text() == "") | (self.login_tb.text() == "") | (self.pass_tb.text() == "")):
+        if ((self.surname_tb.text() == "") | (self.name_tb.text() == "") | (self.patr_tb.text() == "") |
+                (self.login_tb.text() == "") | (self.pass_tb.text() == "")):
             info(self, 'Ошибка!', 'Заполните все поля!')
         else:
             # проверка на наличие в системе введенного логина
@@ -209,7 +211,8 @@ class CalcWindowClass(QMainWindow):
 
     # ф-ция калькулятора удобрений
     def calc(self):
-        if ((self.square_tb.text() == "") | (self.quantity_tb.text() == "") | (self.number_tb.text() == "") | (self.mass_tb.text() == "")):
+        if ((self.square_tb.text() == "") | (self.quantity_tb.text() == "") | (self.number_tb.text() == "") |
+                (self.mass_tb.text() == "")):
             info(self, 'Ошибка!', 'Заполните все поля!')
         elif (self.square_tb.text() == ',') | (self.mass_tb.text() == ','):
             info(self, 'Ошибка!', 'Введены некорректные данные!')
